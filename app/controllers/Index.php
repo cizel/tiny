@@ -1,16 +1,11 @@
 <?php
-/**
- * Demo 示例
- */
-class IndexController extends Yaf_Controller_Abstract 
+use Support\Facades\Config;
+
+class IndexController extends \Core\Rest
 {
-    /**
-     * Demo 首页
-     * 使用phtml 模板渲染
-     */
+
     public function indexAction()
     {
-        $user = 'cizel';
-        $this->getView()->assign('user', $user);
+        $config =  Config::get('rest');
     }
 }
