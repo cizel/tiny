@@ -6,6 +6,6 @@ class IndexController extends \Core\Rest
 
     public function indexAction()
     {
-        $config =  Config::get('rest');
+        $this->response('-1', 'index empty', '200');
     }
 }

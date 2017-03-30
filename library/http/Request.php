@@ -9,8 +9,71 @@
 
 namespace Http;
 
-use Yaf_Request_Abstract;
+use Support\Str;
+use \Yaf_Dispatcher as Dispatcher;
 
-class Request extends Yaf_Request_Abstract
+class Request
 {
+    public static function url()
+    {
+        return static::getRequest()->getRequestUri();
+    }
+
+    public static function getContent()
+    {
+        return file_get_contents('php://input');
+    }
+
+    public static function method()
+    {
+        return static::getRequest()->getMethod();
+    }
+
+    public static function isMethod($method)
+    {
+        if (static::getRequest()->getMethod() === $method) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function server($params)
+    {
+        return static::getRequest()->getServer($params);
+    }
+
+    public static function isJson()
+    {
+        if (Str::contains(static::server('CONTENT_TYPE'), '/json')) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function setParam($name, $value)
+    {
+        return static::getRequest()->setParam($name, $value);
+    }
+    public static function getActionName()
+    {
+        return static::getRequest()->getActionName();
+    }
+    public static function setActionName($action)
+    {
+        return static::getRequest()->setActionName($action);
+    }
+    public static function getControllerName()
+    {
+        return static::getRequest()->getControllerName();
+    }
+
+    public static function getModuleName()
+    {
+        return static::getRequest()->getModuleName();
+    }
+
+    private static function getRequest()
+    {
+        return Dispatcher::getInstance()->getRequest();
+    }
 }

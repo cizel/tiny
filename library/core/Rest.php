@@ -9,8 +9,11 @@
 
 namespace Core;
 
+use Http\Request;
 use Support\Facades\Config;
+use Support\Str;
 use Yaf_Controller_Abstract as AbstractController;
+use Yaf_Dispatcher as Dispatcher;
 
 class Rest extends AbstractController
 {
@@ -27,27 +30,28 @@ class Rest extends AbstractController
     }
 
     /**
-     * 初始化
+     * 初始化控制器
      */
     public function init()
     {
-        \Yaf_Dispatcher::getInstance()->disableView(); //关闭试图模版
-        $request = $this->getRequest();
+        /** 关闭视图模版 **/
+        Dispatcher::getInstance()->disableView();
 
+        /** 设置跨域请求头 **/
         if ($cors = Config::get('cors')) {
             $this->corsHeader($cors->toArray());
         }
+        $request = new Request();
+        $method = Request::method();
 
-        $method = $request->getMethod();
-
-        $type   = $request->getServer('CONTENT_TYPE');
+        $type = $request::server('CONTENT_TYPE');
 
         if ($method === 'OPTIONS') {
             /*cors 跨域header应答,只需响应头即可*/
             exit;
-        } elseif (strpos($type, 'application/json') === 0) {
+        } elseif (Str::contains($type, 'application/json')) {
             /*json 数据格式*/
-            if ($inputs = file_get_contents('php://input')) {
+            if ($inputs = Request::input()) {
                 $input_data = json_decode($inputs, true);
                 if ($input_data) {
                     $GLOBALS['_'.$method] = $input_data;
