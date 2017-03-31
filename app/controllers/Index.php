@@ -1,11 +1,10 @@
 <?php
-use Support\Facades\Config;
+use Http\Request;
 
 class IndexController extends \Core\Rest
 {
-
     public function indexAction()
     {
-        $this->response('-1', 'index empty', '200');
+
     }
 }

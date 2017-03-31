@@ -14,22 +14,26 @@ use \Yaf_Dispatcher as Dispatcher;
 
 class Request
 {
-    public static function url()
+    public function url()
     {
         return static::getRequest()->getRequestUri();
     }
 
-    public static function getContent()
+    public function getContent()
     {
         return file_get_contents('php://input');
     }
 
-    public static function method()
+    public function method()
     {
         return static::getRequest()->getMethod();
     }
 
-    public static function isMethod($method)
+    /**
+     * @param $method
+     * @return bool
+     */
+    public function isMethod($method)
     {
         if (static::getRequest()->getMethod() === $method) {
             return true;
@@ -37,12 +41,12 @@ class Request
         return false;
     }
 
-    public static function server($params)
+    public function server($params)
     {
         return static::getRequest()->getServer($params);
     }
 
-    public static function isJson()
+    public function isJson()
     {
         if (Str::contains(static::server('CONTENT_TYPE'), '/json')) {
             return true;
@@ -50,24 +54,24 @@ class Request
         return false;
     }
 
-    public static function setParam($name, $value)
+    public function setParam($name, $value)
     {
         return static::getRequest()->setParam($name, $value);
     }
-    public static function getActionName()
+    public function getActionName()
     {
         return static::getRequest()->getActionName();
     }
-    public static function setActionName($action)
+    public function setActionName($action)
     {
         return static::getRequest()->setActionName($action);
     }
-    public static function getControllerName()
+    public function getControllerName()
     {
         return static::getRequest()->getControllerName();
     }
 
-    public static function getModuleName()
+    public function getModuleName()
     {
         return static::getRequest()->getModuleName();
     }

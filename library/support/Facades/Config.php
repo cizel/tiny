@@ -9,6 +9,10 @@
 
 namespace Support\Facades;
 
+/**
+ * Class Config
+ * @method    static mixed    get(string $key, mixed $default = null)    Get the specified configuration value.
+ */
 class Config extends Facade
 {
     protected static function getFacadeAccessor()

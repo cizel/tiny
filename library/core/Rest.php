@@ -9,11 +9,11 @@
 
 namespace Core;
 
-use Http\Request;
-use Support\Facades\Config;
 use Support\Str;
 use Yaf_Controller_Abstract as AbstractController;
 use Yaf_Dispatcher as Dispatcher;
+use Config;
+use Request;
 
 class Rest extends AbstractController
 {
@@ -38,13 +38,13 @@ class Rest extends AbstractController
         Dispatcher::getInstance()->disableView();
 
         /** 设置跨域请求头 **/
-        if ($cors = Config::get('cors')) {
+        if ($cors = \Config::get('cors')) {
             $this->corsHeader($cors->toArray());
         }
-        $request = new Request();
+        $request = new \HTTP\Request;
         $method = Request::method();
 
-        $type = $request::server('CONTENT_TYPE');
+        $type = Request::server('CONTENT_TYPE');
 
         if ($method === 'OPTIONS') {
             /*cors 跨域header应答,只需响应头即可*/

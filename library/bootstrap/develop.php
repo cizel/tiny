@@ -8,12 +8,11 @@ use Yaf_Bootstrap_Abstract as AbstractBootstrap;
 
 class Bootstrap extends AbstractBootstrap
 {
-    /**
-     * 添加路由
-     */
-    public function _initRoute(Yaf_Dispatcher $dispatcher)
-    {
 
+    public function _initClassAlias(Yaf_Dispatcher $dispatcher)
+    {
+        class_alias('Support\Facades\Config', 'Config');
+        class_alias('Support\Facades\Request', 'Request');
     }
 
     public function _initConfig(Yaf_Dispatcher $dispatcher)
@@ -22,4 +21,15 @@ class Bootstrap extends AbstractBootstrap
         $app['config'] = new \Component\Config();
         Facade::setFacadeApplication($app);
     }
+
+    /**
+     * 添加路由
+     */
+    public function _initRoute(Yaf_Dispatcher $dispatcher)
+    {
+        if ($routes = Config::get('routes')) {
+            $dispatcher->getRouter()->addConfig($routes);
+        }
+    }
+
 }

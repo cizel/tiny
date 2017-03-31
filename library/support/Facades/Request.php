@@ -9,6 +9,12 @@
 
 namespace Support\Facades;
 
+/**
+ * Class Request
+ * @method    static mixed    method()
+ * @method    static bool    isMethod(string $name)
+ * @method    static mixed    server(string $key)
+ */
 class Request extends Facade
 {
     protected static function getFacadeAccessor()
