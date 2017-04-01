@@ -35,7 +35,7 @@ class Request
      */
     public function isMethod($method)
     {
-        if (static::getRequest()->getMethod() === $method) {
+        if (static::getRequest()->getMethod() === strtoupper($method)) {
             return true;
         }
         return false;

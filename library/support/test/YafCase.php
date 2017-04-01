@@ -6,11 +6,11 @@
  *
  * @copyright 2017-2017 i@cizel.cn
  */
-namespace Test;
+namespace Support\Test;
 
 use \Yaf_Application as Application;
 
-defined('APP_PATH') || define('APP_PATH', realpath(__DIR__.'/../../'));
+defined('APP_PATH') || define('APP_PATH', realpath(__DIR__ . '/../../../'));
 
 abstract class YafCase extends \PHPUnit_Framework_TestCase
 {
@@ -24,6 +24,8 @@ abstract class YafCase extends \PHPUnit_Framework_TestCase
 
     public function __construct()
     {
+        parent::__construct();
+
         if (static::$useYaf && !extension_loaded('yaf')) {
             $this->markTestSkipped('YAF扩展未加载[not YAF extension]');
         }
@@ -36,7 +38,7 @@ abstract class YafCase extends \PHPUnit_Framework_TestCase
 
     public static function app()
     {
-        if (!$app = Application::app()) {
+        if (! $app = Application::app()) {
             $conf = APP_PATH.'/conf/app.ini';
             $app  = new Application($conf);
             $conf = $app->getConfig();
@@ -44,5 +46,6 @@ abstract class YafCase extends \PHPUnit_Framework_TestCase
                 $app->bootstrap();
             }
         }
+        return $app;
     }
 }
