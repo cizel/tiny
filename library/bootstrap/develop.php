@@ -10,17 +10,16 @@ use Support\Facades\Config;
 class Bootstrap extends AbstractBootstrap
 {
 
-    public function _initConfig(Yaf_Dispatcher $dispatcher)
+    public function _initConfig()
     {
         $app = \Core\Application::app();
         $app['config'] = new \Component\Config();
         Facade::setFacadeApplication($app);
-        class_alias($key, $value);
     }
 
-    public function _initClassAlias(Yaf_Dispatcher $dispatcher)
+    public function _initClassAlias()
     {
-        $classAlias = Config::get('alias');
+        $classAlias = Config::get('alias')->toArray();
         foreach ($classAlias as $key => $value) {
             class_alias($key, $value);
         }
@@ -32,9 +31,10 @@ class Bootstrap extends AbstractBootstrap
 
     public function _initRoute(Yaf_Dispatcher $dispatcher)
     {
-        if ($routes = Config::get('routes')) {
+        $routes = Config::get('routes');
+
+        if (!is_null($routes)) {
             $dispatcher->getRouter()->addConfig($routes);
         }
     }
-
 }
