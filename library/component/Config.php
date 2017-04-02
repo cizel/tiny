@@ -35,4 +35,3 @@ class Config
         return Arr::get($this->items, $key, $default);
     }
 }
-

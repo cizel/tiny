@@ -17,7 +17,7 @@ use Request;
 
 class Rest extends AbstractController
 {
-    protected $response = false;
+    protected $response = '0';
 
     protected $code = 200;
 
@@ -38,7 +38,7 @@ class Rest extends AbstractController
         Dispatcher::getInstance()->disableView();
 
         /** 设置跨域请求头 **/
-        if ($cors = \Config::get('cors')) {
+        if ($cors = Config::get('cors')) {
             $this->corsHeader($cors->toArray());
         }
         $request = new \HTTP\Request;
