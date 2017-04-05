@@ -32,7 +32,7 @@ class ConfigTest extends TestCase
      */
     public function testEmpty()
     {
-        $this->assertSame(Config::get(uniqid('_te_', true)), null);
+        $this->assertEmpty(Config::get(uniqid('_te_', true)));
     }
 
     /**
@@ -41,7 +41,7 @@ class ConfigTest extends TestCase
     public function testDefault()
     {
         $key=uniqid('_td_', true);
-        $default=array(false,null,1,true,array(1,2,4),'test');
+        $default=array(false, null, 1, true, array(1,2,4), 'test');
         foreach ($default as $k => $d) {
             $this->assertSame(Config::get($k . $key, $d), $d);
         }

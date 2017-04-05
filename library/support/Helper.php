@@ -16,4 +16,5 @@ class Helper
     {
         return $value instanceof Closure ? $value() : $value;
     }
+
 }
