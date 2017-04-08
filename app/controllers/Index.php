@@ -1,6 +1,7 @@
 <?php
+use Web\Rest;
 
-class IndexController extends \Core\Rest
+class IndexController extends Rest
 {
     public function indexAction()
     {
@@ -10,6 +11,7 @@ class IndexController extends \Core\Rest
             "title" => "List of zoos",
             "type"  => "application/vnd.yourformat+json"
         ];
-        $this->response('10001', $ret, 200);
+        $ret['cost'] = Tiny::getLogger()->getElapsedTime();
+        $this->response('200', $ret, 200);
     }
 }

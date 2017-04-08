@@ -261,4 +261,48 @@ class Arr
     {
         return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
     }
+
+    public static function filter($array, $filters)
+    {
+        $result = [];
+        $forbiddenVars = [];
+
+        foreach ($filters as $var) {
+            $keys = explode('.', $var);
+            $globalKey = $keys[0];
+            $localKey = isset($keys[1]) ? $keys[1] : null;
+
+            if ($globalKey[0] === '!') {
+                $forbiddenVars[] = [
+                    substr($globalKey, 1),
+                    $localKey,
+                ];
+                continue;
+            }
+
+            if (empty($array[$globalKey])) {
+                continue;
+            }
+            if ($localKey === null) {
+                $result[$globalKey] = $array[$globalKey];
+                continue;
+            }
+            if (!isset($array[$globalKey][$localKey])) {
+                continue;
+            }
+            if (!array_key_exists($globalKey, $result)) {
+                $result[$globalKey] = [];
+            }
+            $result[$globalKey][$localKey] = $array[$globalKey][$localKey];
+        }
+
+        foreach ($forbiddenVars as $var) {
+            list($globalKey, $localKey) = $var;
+            if (array_key_exists($globalKey, $result)) {
+                unset($result[$globalKey][$localKey]);
+            }
+        }
+
+        return $result;
+    }
 }

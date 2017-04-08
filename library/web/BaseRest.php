@@ -7,15 +7,16 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Core;
+namespace Web;
 
+use Exception\InvalidValueException;
 use Support\Str;
-use Yaf_Controller_Abstract as AbstractController;
-use Yaf_Dispatcher as Dispatcher;
-use Config;
-use Request;
+use Yaf_Controller_Abstract as BaseController;
+use Support\Facades\Config;
+use Support\Facades\Request;
+use Support\Facades\View;
 
-class Rest extends AbstractController
+class BaseRest extends BaseController
 {
     protected $response = '0';
 
@@ -30,18 +31,26 @@ class Rest extends AbstractController
     }
 
     /**
-     * 初始化控制器
+     *  Initialize the Controller
      */
     public function init()
     {
-        /** 关闭视图模版 **/
-        Dispatcher::getInstance()->disableView();
+        /** Disable view template **/
+        View::disable();
 
-        /** 设置跨域请求头 **/
-        if ($cors = Config::get('cors')) {
-            $this->corsHeader($cors->toArray());
+        /** Set the cross-domain request header **/
+        $corsConfig = Config::get('cors');
+
+        if (is_null($corsConfig)) {
+            throw new InvalidValueException('cors config not found');
         }
-        $request = new \HTTP\Request;
+
+        $this->corsHeader($corsConfig->toArray());
+
+
+
+        $request = new \Web\Request;
+
         $method = Request::method();
 
         $type = Request::server('CONTENT_TYPE');

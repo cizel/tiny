@@ -7,9 +7,9 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Core;
+namespace filters;
 
-class Container
+class Cors
 {
 
 }

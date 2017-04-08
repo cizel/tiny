@@ -7,7 +7,7 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Http;
+namespace Web;
 
 class Response
 {

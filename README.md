@@ -7,7 +7,8 @@ by: cizel
 3. 功能模块 
     - [x] Config library 读取配置
     - [x] Rest InterFace  Rest 接口
-    - [ ] 依赖注入容器 和 服务定位器 **New**
+    - [x] 异常处理类
+    - [ ] 依赖注入容器 **New**
     - [ ] JWT Authentication 验证方式
     - [ ] ORM 数据对象映射
     - [ ] Cache library  缓存
@@ -15,4 +16,3 @@ by: cizel
     - [ ] 接口调试工具
     - [ ] 脚本运行工具
     - [ ] 输入过滤脚本
-    - [ ] 异常处理类

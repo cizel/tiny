@@ -7,7 +7,7 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Core;
+namespace Web;
 
 use ArrayAccess;
 use Support\Arr;
@@ -23,7 +23,6 @@ class Application implements ArrayAccess
         }
         return self::$app;
     }
-
     public function offsetExists($offset)
     {
         return Arr::exists(static::$component, $offset);
