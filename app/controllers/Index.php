@@ -11,7 +11,8 @@ class IndexController extends Rest
             "title" => "List of zoos",
             "type"  => "application/vnd.yourformat+json"
         ];
-        $ret['cost'] = Tiny::getLogger()->getElapsedTime();
+        var_dump(Tiny::getLogger());
+        Tiny::info('你好', 'cate');
         $this->response('200', $ret, 200);
     }
 }

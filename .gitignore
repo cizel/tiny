@@ -5,3 +5,5 @@ vendor
 .idea
 clover.xml
 runtime
+app/models/
+app/views/

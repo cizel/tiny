@@ -10,6 +10,7 @@
 namespace log;
 
 use base\Component;
+use base\ErrorHandler;
 use Tiny;
 
 class Dispatcher extends Component

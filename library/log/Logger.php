@@ -7,7 +7,7 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace log;
+namespace Log;
 
 use base\Component;
 
@@ -36,17 +36,6 @@ class Logger extends Component
      * Profiling message level. This indicates the message is for profiling purpose.
      */
     const LEVEL_PROFILE = 0x40;
-    /**
-     * Profiling message level. This indicates the message is for profiling purpose. It marks the
-     * beginning of a profiling block.
-     */
-    const LEVEL_PROFILE_BEGIN = 0x50;
-    /**
-     * Profiling message level. This indicates the message is for profiling purpose. It marks the
-     * end of a profiling block.
-     */
-    const LEVEL_PROFILE_END = 0x60;
-
 
     public $messages = [];
 
@@ -122,10 +111,6 @@ class Logger extends Component
     }
 
     /**
-     * Returns the total elapsed time since the start of the current request.
-     * This method calculates the difference between now and the timestamp
-     * defined by constant `YII_BEGIN_TIME` which is evaluated at the beginning
-     * of [[\yii\BaseYii]] class file.
      * @return float the total elapsed time in seconds for current request.
      */
     public function getElapsedTime()
@@ -145,8 +130,6 @@ class Logger extends Component
             self::LEVEL_WARNING => 'warning',
             self::LEVEL_INFO => 'info',
             self::LEVEL_TRACE => 'trace',
-            self::LEVEL_PROFILE_BEGIN => 'profile begin',
-            self::LEVEL_PROFILE_END => 'profile end',
         ];
 
         return isset($levels[$level]) ? $levels[$level] : 'unknown';
