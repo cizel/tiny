@@ -7,9 +7,9 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-define('TINY_PATH', dirname(__DIR__));
+define('APP_PATH', dirname(__DIR__));
 
-$app = new Yaf_Application(TINY_PATH.'/conf/app.ini');
+$app = new Yaf_Application(APP_PATH.'/conf/app.ini');
 
 $app->getConfig()->get('application.bootstrap') && $app->bootstrap();
 

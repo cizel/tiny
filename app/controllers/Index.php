@@ -1,6 +1,6 @@
 <?php
 use Web\Rest;
-
+use Log\Logger;
 class IndexController extends Rest
 {
     public function indexAction()
@@ -11,7 +11,8 @@ class IndexController extends Rest
             "title" => "List of zoos",
             "type"  => "application/vnd.yourformat+json"
         ];
-        $ret['cost'] = Tiny::getLogger()->getElapsedTime();
+        $log = new Logger(APP_PATH.'/runtime/');
+        $log->info('hello');
         $this->response('200', $ret, 200);
     }
 }

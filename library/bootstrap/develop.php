@@ -11,7 +11,6 @@ use Support\Facades\Facade;
 use Yaf_Bootstrap_Abstract as AbstractBootstrap;
 use Support\Facades\Config;
 
-define('TINY_ENV', 'develop');
 
 class Bootstrap extends AbstractBootstrap
 {
@@ -38,6 +37,6 @@ class Bootstrap extends AbstractBootstrap
 
     public function _initTiny()
     {
-        Tiny::$container = new \Di\Container();
+        App::$container = new \Di\Container();
     }
 }
