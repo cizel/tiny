@@ -6,10 +6,7 @@
  *
  * @copyright 2017-2017 i@cizel.cn
  */
-namespace Log;
 
-use DateTime;
-use RuntimeException;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LogLevel;
 

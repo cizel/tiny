@@ -7,16 +7,15 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Web;
+namespace Http;
 
+use Config;
+use Str;
+use Yaf_Dispatcher;
 use Exception\InvalidValueException;
-use Support\Str;
 use Yaf_Controller_Abstract as BaseController;
-use Support\Facades\Config;
-use Support\Facades\Request;
-use Support\Facades\View;
 
-class BaseRest extends BaseController
+class Rest extends BaseController
 {
     protected $response = '0';
 
@@ -36,7 +35,7 @@ class BaseRest extends BaseController
     public function init()
     {
         /** Disable view template **/
-        View::disable();
+        Yaf_Dispatcher::getInstance()->disableView();
 
         /** Set the cross-domain request header **/
         $corsConfig = Config::get('cors');
@@ -47,9 +46,7 @@ class BaseRest extends BaseController
 
         $this->corsHeader($corsConfig->toArray());
 
-
-
-        $request = new \Web\Request;
+        $request = new \Http\Request;
 
         $method = Request::method();
 

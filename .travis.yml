@@ -1,0 +1,21 @@
+sudo: false
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+
+install:
+  - curl -#SL https://raw.githubusercontent.com/cizel/tiny/master/script/yaf.dev.sh | bash
+  - export PHP_CONF="$(dirname ~/ss)/.phpenv/versions/$(phpenv version-name)/etc"
+  - echo 'yaf.use_spl_autoload = 1' >> $PHP_CONF/php.ini
+    
+before_script:
+  - while [ ! -f "$PHP_CONF/conf.d/yaf.ini" ];do
+       sleep 0.5;
+    done;
+  - echo "Initialized!";
+
+script:     
+  - phpunit -c phpunit.xml.dist --verbose --coverage-text

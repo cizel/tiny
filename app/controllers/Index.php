@@ -1,6 +1,5 @@
 <?php
-use Web\Rest;
-use Log\Logger;
+use Http\Rest;
 class IndexController extends Rest
 {
     public function indexAction()
@@ -12,7 +11,7 @@ class IndexController extends Rest
             "type"  => "application/vnd.yourformat+json"
         ];
         $log = new Logger(APP_PATH.'/runtime/');
-        $log->info('hello');
+        $log->info(Config::get('routes'));
         $this->response('200', $ret, 200);
     }
 }

@@ -1,20 +1,11 @@
 <?php
-namespace tests\Component;
-
-use Support\Test\YafCase as TestCase;
-use Support\Str;
-
 /**
  * @coversDefaultClass \Config
  */
 class SupportStrTest extends TestCase
 {
-    protected static $autoInit = false;
-
-    protected static $useYaf = false;
-
     /**
-     * @covers ::testContains
+     * @test
      */
     public function testStrContains()
     {

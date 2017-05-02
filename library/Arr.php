@@ -7,10 +7,6 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Support;
-
-use ArrayAccess;
-
 class Arr
 {
 
@@ -27,22 +23,6 @@ class Arr
     public static function divide($array)
     {
         return [array_keys($array), array_values($array)];
-    }
-
-
-    public static function dot($array, $prepend = '')
-    {
-        $results = [];
-
-        foreach ($array as $key => $value) {
-            if (is_array($value) && ! empty($value)) {
-                $results = array_merge($results, static::dot($value, $prepend.$key.'.'));
-            } else {
-                $results[$prepend.$key] = $value;
-            }
-        }
-
-        return $results;
     }
 
     public static function first($array, callable $callback = null, $default = null)
@@ -254,12 +234,6 @@ class Arr
         }
 
         return array_key_exists($key, $array);
-    }
-
-
-    public static function where($array, callable $callback)
-    {
-        return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
     }
 
     public static function filter($array, $filters)

@@ -7,8 +7,6 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Support;
-
 class Str
 {
     /**

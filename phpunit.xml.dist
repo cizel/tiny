@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="./tests/bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         stderr="true"
+         colors="true">
+
+    <testsuites>
+        <testsuite name="tiny support Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <ini name="yaf.use_spl_autoload" value="ON"/>
+        <ini name="display_errors" value="ON"/>
+    </php>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./library</directory>
+        </whitelist>
+    </filter>
+</phpunit>

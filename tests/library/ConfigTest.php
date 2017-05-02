@@ -1,25 +1,17 @@
 <?php
-namespace tests\Component;
-
-use Config;
-use Support\Test\YafCase as TestCase;
 
 /**
  * @coversDefaultClass \Config
  */
 class ConfigTest extends TestCase
 {
-    protected static $autoInit = true;
-
-    protected static $useYaf = true;
-
     /**
      * @covers ::get
      * 测试配置和配置文件是否一致
      */
     public function testConfigConsistency()
     {
-        $env=$this->app->environ();
+        $env=Yaf_Application::app()->environ();
         $config=parse_ini_file(APP_PATH.'/conf/app.ini', true);
         $current=$config[$env.':common'] + $config['common'];
         foreach ($current as $key => $value) {
@@ -46,15 +38,4 @@ class ConfigTest extends TestCase
             $this->assertSame(Config::get($k . $key, $d), $d);
         }
     }
-
-    /**
-     * @depends testConfigConsistency
-     */
-    public function testSecretPath()
-    {
-        $secret_ini=Config::get('secret_path');
-        $this->assertFileExists($secret_ini, $secret_ini.' Config cannot find');
-        return $secret_ini;
-    }
-
 }

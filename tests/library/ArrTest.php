@@ -1,12 +1,6 @@
 <?php
-namespace tests\Component;
 
-use ArrayObject;
-use stdClass;
-use Support\Test\YafCase as TestCase;
-use Support\Arr;
-
-class SupportArrTest extends TestCase
+class SupportArrTest extends TestCase 
 {
     public function testAccessible()
     {
@@ -31,21 +25,6 @@ class SupportArrTest extends TestCase
         list($keys, $values) = Arr::divide(['name' => 'Desk']);
         $this->assertEquals(['name'], $keys);
         $this->assertEquals(['Desk'], $values);
-    }
-
-    public function testDot()
-    {
-        $array = Arr::dot(['foo' => ['bar' => 'baz']]);
-        $this->assertEquals(['foo.bar' => 'baz'], $array);
-
-        $array = Arr::dot([]);
-        $this->assertEquals([], $array);
-
-        $array = Arr::dot(['foo' => []]);
-        $this->assertEquals(['foo' => []], $array);
-
-        $array = Arr::dot(['foo' => ['bar' => []]]);
-        $this->assertEquals(['foo.bar' => []], $array);
     }
 
     public function testExcept()
@@ -263,28 +242,6 @@ class SupportArrTest extends TestCase
         $array = ['products' => ['desk' => ['price' => 100]]];
         Arr::set($array, 'products.desk.price', 200);
         $this->assertEquals(['products' => ['desk' => ['price' => 200]]], $array);
-    }
-
-    public function testWhere()
-    {
-        $array = [100, '200', 300, '400', 500];
-
-        $array = Arr::where($array, function ($value, $key) {
-            return is_string($value);
-        });
-
-        $this->assertEquals([1 => 200, 3 => 400], $array);
-    }
-
-    public function testWhereKey()
-    {
-        $array = ['10' => 1, 'foo' => 3, 20 => 2];
-
-        $array = Arr::where($array, function ($value, $key) {
-            return is_numeric($key);
-        });
-
-        $this->assertEquals(['10' => 1, 20 => 2], $array);
     }
 
     public function testForget()

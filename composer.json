@@ -1,0 +1,27 @@
+{
+    "name": "cizel/tiny",
+    "description": "The Tiny API Framework.",
+    "keywords": ["framework", "yaf", "tiny"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

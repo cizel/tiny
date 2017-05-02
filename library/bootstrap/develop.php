@@ -9,19 +9,10 @@
 
 use Support\Facades\Facade;
 use Yaf_Bootstrap_Abstract as AbstractBootstrap;
-use Support\Facades\Config;
-
+use Providers\BaseServiceProvider;
 
 class Bootstrap extends AbstractBootstrap
 {
-
-    public function _initConfig()
-    {
-        $app = \Web\Application::app();
-        $app['config'] = new \Component\Config();
-        Facade::setFacadeApplication($app);
-    }
-
     /**
      * 添加路由
      */
@@ -33,10 +24,5 @@ class Bootstrap extends AbstractBootstrap
         if (!is_null($routes)) {
             $dispatcher->getRouter()->addConfig($routes);
         }
-    }
-
-    public function _initTiny()
-    {
-        App::$container = new \Di\Container();
     }
 }

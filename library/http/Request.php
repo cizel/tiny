@@ -7,24 +7,24 @@
  * @copyright 2017-2017 i@cizel.cn
  */
 
-namespace Web;
+namespace Http;
 
-use Support\Str;
+use Str;
 use \Yaf_Dispatcher as Dispatcher;
 
 class Request
 {
-    public function url()
+    public static function url()
     {
         return static::getRequest()->getRequestUri();
     }
 
-    public function getContent()
+    public static function getContent()
     {
         return file_get_contents('php://input');
     }
 
-    public function method()
+    public static function method()
     {
         return static::getRequest()->getMethod();
     }
@@ -33,7 +33,7 @@ class Request
      * @param $method
      * @return bool
      */
-    public function isMethod($method)
+    public static function isMethod($method)
     {
         if (static::getRequest()->getMethod() === strtoupper($method)) {
             return true;
@@ -41,12 +41,12 @@ class Request
         return false;
     }
 
-    public function server($params)
+    public static function server($params)
     {
         return static::getRequest()->getServer($params);
     }
 
-    public function isJson()
+    public static function isJson()
     {
         if (Str::contains(static::server('CONTENT_TYPE'), '/json')) {
             return true;
@@ -54,24 +54,24 @@ class Request
         return false;
     }
 
-    public function setParam($name, $value)
+    public static function setParam($name, $value)
     {
         return static::getRequest()->setParam($name, $value);
     }
-    public function getActionName()
+    public static function getActionName()
     {
         return static::getRequest()->getActionName();
     }
-    public function setActionName($action)
+    public static function setActionName($action)
     {
         return static::getRequest()->setActionName($action);
     }
-    public function getControllerName()
+    public static function getControllerName()
     {
         return static::getRequest()->getControllerName();
     }
 
-    public function getModuleName()
+    public static function getModuleName()
     {
         return static::getRequest()->getModuleName();
     }
