@@ -6,7 +6,7 @@ use StdClass;
 use ArrayObject;
 use Tests\TestCase;
 
-class SupportArrTest extends TestCase 
+class SupportArrTest extends TestCase
 {
     public function testAccessible()
     {
@@ -298,5 +298,4 @@ class SupportArrTest extends TestCase
         Arr::forget($array, ['emails.joe@example.com', 'emails.jane@localhost']);
         $this->assertEquals(['emails' => ['joe@example.com' => ['name' => 'Joe']]], $array);
     }
-
 }

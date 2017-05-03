@@ -9,6 +9,7 @@
 class Config
 {
     private static $item = null;
+    private static $secret = null;
     /**
      * 获取INI的配置信息
      * @param $key
@@ -21,5 +22,18 @@ class Config
             static::$item = Yaf_Application::app()->getConfig();
         }
         return Arr::get(static::$item, $key, $default);
+    }
+
+    public static function getSecret($name, $key = null)
+    {
+        if (is_null(static::$secret)) {
+            static::$secret = new Yaf_Config_Ini(Config::get('secret_path'));
+        }
+
+        if (is_null($key)) {
+            return static::$secret->get($name);
+        } else {
+            return static::$secret->get($name)->get($key);
+        }
     }
 }

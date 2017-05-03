@@ -28,6 +28,6 @@ class Bootstrap extends AbstractBootstrap
 
     public function _initAutoload(Yaf_Dispatcher $dispatcher)
     {
-        Yaf_Loader::import(APP_PATH . "/vendor/autoload.php");  
+        Yaf_Loader::import(APP_PATH . "/vendor/autoload.php");
     }
 }

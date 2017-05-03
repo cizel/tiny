@@ -9,7 +9,6 @@
 
 namespace exception;
 
-
 class UnknownClassException extends Exception
 {
     public function getName()

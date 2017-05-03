@@ -9,7 +9,6 @@
 
 namespace exception;
 
-
 class UnknownMethodException extends \BadMethodCallException
 {
     public function getName()

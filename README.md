@@ -9,8 +9,7 @@
 2. ~~修改项目使用 YAF 来搭建项目~~
 3. ~~添加composer到项目中~~  
 3. 功能模块
-    - [ ] conf/config.php 全局配置的重写
-    - [ ] bootstrap 加载
+    - [x] bootstrap 加载
     - [ ] Config library 读取配置
     - [ ] Rest InterFace Rest 接口
     - [ ] 异常处理类

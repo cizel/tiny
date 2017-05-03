@@ -46,7 +46,7 @@ class Rest extends BaseController
 
         $this->corsHeader($corsConfig->toArray());
 
-        $request = $this->getRequest(); 
+        $request = $this->getRequest();
 
         $method = $request->getMethod();
 

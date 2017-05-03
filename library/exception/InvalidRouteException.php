@@ -9,7 +9,6 @@
 
 namespace exception;
 
-
 class InvalidRouteException extends UserException
 {
     public function getName()

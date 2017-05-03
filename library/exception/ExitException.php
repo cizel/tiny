@@ -9,7 +9,6 @@
 
 namespace exception;
 
-
 class ExitException extends Exception
 {
     public $statusCode;
