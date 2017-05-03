@@ -1,4 +1,9 @@
 <?php
+namespace Tests\Library;
+
+use Str;
+use Tests\TestCase;
+
 /**
  * @coversDefaultClass \Config
  */

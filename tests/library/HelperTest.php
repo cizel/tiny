@@ -1,4 +1,8 @@
 <?php
+namespace Tests\Library;
+
+use Helper;
+use Tests\TestCase;
 
 /**
  * Class HelperTest

@@ -1,4 +1,10 @@
 <?php
+namespace Tests\Library;
+
+use Arr;
+use StdClass;
+use ArrayObject;
+use Tests\TestCase;
 
 class SupportArrTest extends TestCase 
 {

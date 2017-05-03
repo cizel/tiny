@@ -1,5 +1,9 @@
 <?php
+namespace Tests\Library;
 
+use Config;
+use Yaf_Application;
+use Tests\TestCase;
 /**
  * @coversDefaultClass \Config
  */

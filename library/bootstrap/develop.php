@@ -25,4 +25,9 @@ class Bootstrap extends AbstractBootstrap
             $dispatcher->getRouter()->addConfig($routes);
         }
     }
+
+    public function _initAutoload(Yaf_Dispatcher $dispatcher)
+    {
+        Yaf_Loader::import(APP_PATH . "/vendor/autoload.php");  
+    }
 }

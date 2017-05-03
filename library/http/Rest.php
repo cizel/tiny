@@ -46,18 +46,18 @@ class Rest extends BaseController
 
         $this->corsHeader($corsConfig->toArray());
 
-        $request = new \Http\Request;
+        $request = $this->getRequest(); 
 
-        $method = Request::method();
+        $method = $request->getMethod();
 
-        $type = Request::server('CONTENT_TYPE');
+        $type = $request->getServer('CONTENT_TYPE');
 
         if ($method === 'OPTIONS') {
             /*cors 跨域header应答,只需响应头即可*/
             exit;
         } elseif (Str::contains($type, 'application/json')) {
             /*json 数据格式*/
-            if ($inputs = Request::input()) {
+            if ($inputs = file_get_contents('php://input')) {
                 $input_data = json_decode($inputs, true);
                 if ($input_data) {
                     $GLOBALS['_'.$method] = $input_data;
@@ -117,7 +117,6 @@ class Rest extends BaseController
             $this->config['data']   => $data,
         );
         ($code > 0) && $this->code = $code;
-        exit;
     }
 
     protected function success($data = null, $code = 200)
@@ -127,7 +126,6 @@ class Rest extends BaseController
             $this->config['data']   => $data,
         );
         $this->code = $code;
-        exit;
     }
 
     protected function fail($data = null, $code = 200)
@@ -137,7 +135,6 @@ class Rest extends BaseController
             $this->config['data']   => $data,
         );
         $this->code = $code;
-        exit;
     }
 
 
