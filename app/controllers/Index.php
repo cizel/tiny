@@ -5,7 +5,7 @@ class IndexController extends Rest
 {
     public function indexAction()
     {
-        $ret = Config::getSecret('gitlab')->toArray();
+        $ret = 'hello world';
         return $this->response(200, $ret, 200);
     }
 }
