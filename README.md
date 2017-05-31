@@ -15,6 +15,6 @@
     - [x] 异常处理类
     - [ ] JWT Authentication 验证方式
     - [x] ORM 数据对象映射
-    - [ ] Cache library  缓存
+    - [x] Cache library  缓存
     - [x] log library   日志记录
     - [ ] 输入过滤脚本
