@@ -10,13 +10,11 @@
 3. ~~添加composer到项目中~~  
 3. 功能模块
     - [x] bootstrap 加载
-    - [ ] Config library 读取配置
-    - [ ] Rest InterFace Rest 接口
-    - [ ] 异常处理类
+    - [x] Config library 读取配置
+    - [x] Rest InterFace Rest 接口
+    - [x] 异常处理类
     - [ ] JWT Authentication 验证方式
-    - [ ] ORM 数据对象映射
+    - [x] ORM 数据对象映射
     - [ ] Cache library  缓存
-    - [ ] log library   日志记录
-    - [ ] 接口调试工具
-    - [ ] 脚本运行工具
+    - [x] log library   日志记录
     - [ ] 输入过滤脚本
