@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+namespace Exception;
 
-namespace exception;
-
-class UnknownClassException extends Exception
+class InvalidRouteException extends UserException
 {
     public function getName()
     {
-        return 'Unknown Class';
+        return 'Invalid Route';
     }
 }

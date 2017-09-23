@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
-
 namespace Exception;
 
-class UnknownPropertyException extends Exception
+class YafException extends \Yaf_Exception
 {
     public function getName()
     {
-        return 'Unknown Property';
+        return 'Yaf Exception';
     }
 }

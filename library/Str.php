@@ -5,6 +5,7 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
 
 class Str

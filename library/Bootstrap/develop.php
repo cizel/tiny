@@ -5,11 +5,10 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
 
-use Support\Facades\Facade;
 use Yaf_Bootstrap_Abstract as AbstractBootstrap;
-use Providers\BaseServiceProvider;
 
 class Bootstrap extends AbstractBootstrap
 {
@@ -28,6 +27,6 @@ class Bootstrap extends AbstractBootstrap
 
     public function _initAutoload(Yaf_Dispatcher $dispatcher)
     {
-        Yaf_Loader::import(APP_PATH . "/vendor/autoload.php");
+        Yaf_Loader::import(APP_PATH . '/vendor/autoload.php');
     }
 }

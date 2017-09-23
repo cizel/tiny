@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
-
 namespace Exception;
 
-class InvalidValueException extends \UnexpectedValueException
+class InvalidCallException extends \BadMethodCallException
 {
     public function getName()
     {
-        return 'Invalid Return Value';
+        return 'Invalid Call';
     }
 }

@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+namespace Exception;
 
-namespace exception;
-
-class InvalidParamException
+class InvalidValueException extends \UnexpectedValueException
 {
     public function getName()
     {
-        return 'Invalid Parameter';
+        return 'Invalid Return Value';
     }
 }

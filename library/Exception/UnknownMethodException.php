@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+namespace Exception;
 
-namespace exception;
-
-class InvalidConfigException extends Exception
+class UnknownMethodException extends \BadMethodCallException
 {
     public function getName()
     {
-        return 'Invalid Configuration';
+        return 'Unknown Method';
     }
 }

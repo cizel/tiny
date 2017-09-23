@@ -1,9 +1,17 @@
 <?php
+/**
+ * Tiny Api Framework.
+ *
+ * @link https://github.com/cizel/tiny
+ *
+ * @copyright 2017-2017 i@cizel.cn
+ *
+ */
 namespace Tests\Library;
 
 use Config;
-use Yaf_Application;
 use Tests\TestCase;
+use Yaf_Application;
 
 /**
  * @coversDefaultClass \Config
@@ -17,8 +25,8 @@ class ConfigTest extends TestCase
     public function testConfigConsistency()
     {
         $env=Yaf_Application::app()->environ();
-        $config=parse_ini_file(APP_PATH.'/conf/app.ini', true);
-        $current=$config[$env.':common'] + $config['common'];
+        $config=parse_ini_file(APP_PATH . '/conf/app.ini', true);
+        $current=$config[$env . ':common'] + $config['common'];
         foreach ($current as $key => $value) {
             $this->assertSame($current[$key], Config::get($key), $key);
         }
@@ -38,7 +46,7 @@ class ConfigTest extends TestCase
     public function testDefault()
     {
         $key=uniqid('_td_', true);
-        $default=array(false, null, 1, true, array(1,2,4), 'test');
+        $default=[false, null, 1, true, [1,2,4], 'test'];
         foreach ($default as $k => $d) {
             $this->assertSame(Config::get($k . $key, $d), $d);
         }

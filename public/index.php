@@ -5,17 +5,15 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
 
-/**
- * Set the root directory
- */
 define('APP_PATH', dirname(__DIR__));
 
 /**
  *  New Yaf Application
  */
-$app = new Yaf_Application(APP_PATH.'/conf/app.ini');
+$app = new Yaf_Application(APP_PATH . '/conf/app.ini');
 
 /**
  * Set bootstrap From app.ini

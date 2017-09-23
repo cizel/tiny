@@ -5,11 +5,11 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
 
 class Arr
 {
-
     /**
      * 判断是否为 数组 或者 ArrayAccess 对象
      * @param $value
@@ -63,7 +63,7 @@ class Arr
 
         $keys = (array) $keys;
 
-        if (! $array) {
+        if (!$array) {
             return false;
         }
 
@@ -133,7 +133,7 @@ class Arr
 
     public static function get($array, $key, $default = null)
     {
-        if (! static::accessible($array)) {
+        if (!static::accessible($array)) {
             return Helper::value($default);
         }
 
@@ -170,7 +170,7 @@ class Arr
             // If the key doesn't exist at this depth, we will just create an empty array
             // to hold the next value, allowing us to create the arrays to hold final
             // values at the correct depth. Then we'll keep digging into the array.
-            if (! isset($array[$key]) || ! is_array($array[$key])) {
+            if (!isset($array[$key]) || !is_array($array[$key])) {
                 $array[$key] = [];
             }
 

@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+namespace Exception;
 
-namespace exception;
-
-class YafException extends \Yaf_Exception
+class NotSupportedException extends Exception
 {
     public function getName()
     {
-        return 'Yaf Exception';
+        return 'Not Supported';
     }
 }

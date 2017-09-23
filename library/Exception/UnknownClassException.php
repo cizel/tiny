@@ -5,14 +5,14 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+namespace Exception;
 
-namespace exception;
-
-class Exception extends \Exception
+class UnknownClassException extends Exception
 {
     public function getName()
     {
-        return 'Exception';
+        return 'Unknown Class';
     }
 }

@@ -5,9 +5,9 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
-
-namespace exception;
+namespace Exception;
 
 class ErrorException extends \ErrorException
 {

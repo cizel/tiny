@@ -5,7 +5,9 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
+
 class Config
 {
     private static $item = null;
@@ -32,8 +34,7 @@ class Config
 
         if (is_null($key)) {
             return static::$secret->get($name);
-        } else {
-            return static::$secret->get($name)->get($key);
         }
+        return static::$secret->get($name)->get($key);
     }
 }

@@ -5,15 +5,15 @@
  * @link https://github.com/cizel/tiny
  *
  * @copyright 2017-2017 i@cizel.cn
+ *
  */
-
 namespace Http;
 
 use Config;
-use Str;
-use Yaf_Dispatcher;
 use Exception\InvalidValueException;
+use Str;
 use Yaf_Controller_Abstract as BaseController;
+use Yaf_Dispatcher;
 
 class Rest extends BaseController
 {
@@ -60,9 +60,9 @@ class Rest extends BaseController
             if ($inputs = file_get_contents('php://input')) {
                 $input_data = json_decode($inputs, true);
                 if ($input_data) {
-                    $GLOBALS['_'.$method] = $input_data;
+                    $GLOBALS['_' . $method] = $input_data;
                 } else {
-                    parse_str($inputs, $GLOBALS['_'.$method]);
+                    parse_str($inputs, $GLOBALS['_' . $method]);
                 }
             }
         } elseif ($method === 'PUT' && ($inputs = file_get_contents('php://input'))) {
@@ -80,28 +80,28 @@ class Rest extends BaseController
             $request->setParam($this->config['param'], intval($action));
             //提取请求路径
             $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] :
-                strstr($_SERVER['REQUEST_URI'].'?', '?', true);
+                strstr($_SERVER['REQUEST_URI'] . '?', '?', true);
             $path   = substr(strstr($path, $action), strlen($action) + 1);
-            $action = $path ? strstr($path.'/', '/', true) : $this->config['action'];
+            $action = $path ? strstr($path . '/', '/', true) : $this->config['action'];
         }
 
-        $restAction = $method.$action; //对应REST_Action
+        $restAction = $method . $action; //对应REST_Action
 
-        if (method_exists($this, $restAction.'Action')) {
+        if (method_exists($this, $restAction . 'Action')) {
             /*存在对应的操作*/
             $request->setActionName($restAction);
-        } elseif (!method_exists($this, $action.'Action')) {
+        } elseif (!method_exists($this, $action . 'Action')) {
             /*action和REST_action 都不存在*/
-            if (method_exists($this, $this->config['none'].'Action')) {
+            if (method_exists($this, $this->config['none'] . 'Action')) {
                 $request->setActionName($this->config['none']);
             } else {
-                $this->response(-8, array(
+                $this->response(-8, [
                     'error'      => '未定义操作',
                     'method'     => $method,
                     'action'     => $action,
                     'controller' => $request->getControllerName(),
                     'module'     => $request->getmoduleName(),
-                ), 404);
+                ], 404);
                 exit;
             }
         } elseif ($action !== $request->getActionName()) {
@@ -112,28 +112,28 @@ class Rest extends BaseController
 
     protected function response($status, $data = null, $code = null)
     {
-        $this->response = array(
+        $this->response = [
             $this->config['status'] => $status,
             $this->config['data']   => $data,
-        );
+        ];
         ($code > 0) && $this->code = $code;
     }
 
     protected function success($data = null, $code = 200)
     {
-        $this->response = array(
+        $this->response = [
             $this->config['status'] => 1,
             $this->config['data']   => $data,
-        );
+        ];
         $this->code = $code;
     }
 
     protected function fail($data = null, $code = 200)
     {
-        $this->response = array(
+        $this->response = [
             $this->config['status'] => 0,
             $this->config['data']   => $data,
-        );
+        ];
         $this->code = $code;
     }
 
@@ -157,7 +157,7 @@ class Rest extends BaseController
                 }
                 if (!$domain) {
                     /*非请指定的求来源,自动终止响应*/
-                    header('Forbid-Origin: '.$from);
+                    header('Forbid-Origin: ' . $from);
                     return;
                 }
             } elseif ($cors['Access-Control-Allow-Credentials'] === 'true') {
@@ -165,7 +165,7 @@ class Rest extends BaseController
                 $cors['Access-Control-Allow-Origin'] = $from;
             }
             foreach ($cors as $key => $value) {
-                header($key.': '.$value);
+                header($key . ': ' . $value);
             }
         }
     }
